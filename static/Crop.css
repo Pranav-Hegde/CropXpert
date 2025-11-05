@@ -1,0 +1,68 @@
+body.dark-body {
+    background-color: #0d0d0d;
+    color: #f1f1f1;
+    font-family: 'Fira Code', monospace;
+}
+
+/* Neon header text */
+.neon-text {
+    text-shadow: 0 0 5px #ffc107, 0 0 10px #ffc107, 0 0 20px #ff8c00;
+    font-weight: bold;
+}
+
+/* Card background glass look */
+.dark-card {
+    background: rgba(25, 25, 25, 0.95);
+    border-radius: 16px;
+    border: 1px solid #333;
+    box-shadow: 0 0 20px rgba(255, 193, 7, 0.2);
+}
+
+/* Stylish inputs */
+.dark-input {
+    background-color: #1a1a1a;
+    border: 1px solid #444;
+    color: #fff;
+}
+
+.dark-input:focus {
+    background-color: #1f1f1f;
+    border-color: #ffc107;
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.4);
+    color: #fff;
+}
+
+/* Glowing button */
+.glow-button {
+    border-radius: 6px;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+}
+
+.glow-button:hover {
+    background-color: #ffc107;
+    color: #000;
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.8);
+}
+
+/* Result box */
+.glow-result {
+    background-color: #121212;
+    border-left: 5px solid #28a745;
+    font-size: 1.2rem;
+    box-shadow: 0 0 8px #28a745;
+    color: #a9f5c1;
+}
+
+.neon-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 0 0 5px #ffc107, 0 0 15px #ff9800;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    color: #bbb;
+    margin-top: -10px;
+    letter-spacing: 0.5px;
+}
