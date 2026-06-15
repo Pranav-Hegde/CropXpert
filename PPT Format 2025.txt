@@ -1,0 +1,37 @@
+General Instructions
+Everything should be only in points
+Main heading give numbers and sub heading bullet points 
+Prepare two ppt one for 25 pages and another for 15 pages
+Main Heading (18)
+Page Heading (16)
+Sub Heading (14)
+Content 14 or 12 based on content
+use only white background or some mild templates only
+No page Should be empty fill some contents
+
+
+First Page - 
+
+Title (font size 18)
+
+USN, Name, Department, Year(left)( Font size 14)
+
+(Right)
+Dr. V. Srinivasan,
+Associate Professor,
+Department of Computer Applications,
+Dayananda Sagar College of Engineering.
+
+Abstract (one page) font size 14 Point only
+
+Modules List 
+
+Explain each module
+
+Screen shot minimum 5
+
+Conclusion
+Future Enhancement
+Reference
+
+

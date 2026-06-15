@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Crop Recommender</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #22c55e 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .form-card {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.8) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            animation: fadeIn 1s ease-out 0.2s both;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .form-group:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+
+        .form-group:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .form-group:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        .form-group:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        .form-group:nth-child(5) {
+            animation-delay: 0.7s;
+        }
+
+        .form-group:nth-child(6) {
+            animation-delay: 0.8s;
+        }
+
+        .form-group:nth-child(7) {
+            animation-delay: 0.9s;
+        }
+
+        label {
+            color: #e2e8f0;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        label::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(135deg, #22c55e, #3b82f6);
+            border-radius: 50%;
+        }
+
+        input[type="number"] {
+            background: rgba(30, 41, 59, 0.5);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 14px 16px;
+            color: #e2e8f0;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #22c55e;
+            background: rgba(30, 41, 59, 0.8);
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+        }
+
+        input[type="number"]::placeholder {
+            color: #64748b;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 40px;
+            animation: fadeIn 1s ease-out 1s both;
+        }
+
+        button {
+            flex: 1;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(34, 197, 94, 0.5);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        .btn-reset {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+            border: 2px solid #3b82f6;
+        }
+
+        .btn-reset:hover {
+            background: rgba(59, 130, 246, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .result-message {
+            margin-top: 20px;
+            padding: 15px 20px;
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid #22c55e;
+            border-radius: 8px;
+            color: #86efac;
+            font-size: 0.95rem;
+            display: none;
+        }
+
+        .result-message.show {
+            display: block;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-card {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌾 Smart Crop Recommender</h1>
+            <p>Get personalized crop recommendations based on soil and climate data</p>
+        </div>
+
+        <div class="form-card">
+            <form id="cropForm" method="POST" action="/predict">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="nitrogen">Nitrogen (N)</label>
+                        <input type="number" id="nitrogen" name="nitrogen" placeholder="0-140" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phosphorus">Phosphorus (P)</label>
+                        <input type="number" id="phosphorus" name="phosphorus" placeholder="0-145" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="potassium">Potassium (K)</label>
+                        <input type="number" id="potassium" name="potassium" placeholder="0-205" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="temperature">Temperature (°C)</label>
+                        <input type="number" id="temperature" name="temperature" placeholder="8-44" step="0.01"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="humidity">Humidity (%)</label>
+                        <input type="number" id="humidity" name="humidity" placeholder="14-100" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ph">Soil pH</label>
+                        <input type="number" id="ph" name="ph" placeholder="3.5-10" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rainfall">Rainfall (mm)</label>
+                        <input type="number" id="rainfall" name="rainfall" placeholder="20-300" step="0.01" required>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn-submit">Get Recommendation</button>
+                    <button type="reset" class="btn-reset">Clear Form</button>
+                </div>
+
+                <div class="result-message" id="resultMessage">
+                    ✓ Form submitted successfully! Redirecting to results...
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('cropForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Show success message
+            const resultMessage = document.getElementById('resultMessage');
+            resultMessage.classList.add('show');
+
+            // Collect form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+
+            // Store data in sessionStorage to pass to Result.html
+            sessionStorage.setItem('cropData', JSON.stringify(data));
+
+            // Redirect to Result.html after a short delay
+            setTimeout(() => {
+                this.action = '/predict';
+                this.submit();
+            }, 800);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+body,
+html {
+    background-color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-section {
+    background-color: #000;
+    color: #ffffff;
+    min-height: 90vh;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer {
+    background-color: #000;
+    color: #aaa;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #ddd;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #fff;
+}
+
+.navbar-dark .navbar-brand {
+    color: #fff;
+}
+
+.navbar-dark {
+    background-color: #000 !important;
+}
+
+button.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+button.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}

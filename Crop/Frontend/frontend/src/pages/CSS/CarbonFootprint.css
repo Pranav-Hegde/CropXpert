@@ -1,0 +1,172 @@
+/* CarbonFootprint.css */
+
+.carbon-page {
+    min-height: 100vh;
+    background-color: #0f172a; /* Dark background matching dashboard vibes */
+    background-image: radial-gradient(at 0% 0%, #1e293b 0, transparent 50%), 
+                      radial-gradient(at 100% 0%, #0f172a 0, transparent 50%);
+    padding: 60px 0;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: #e2e8f0;
+}
+
+.glass-card {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    text-align: center;
+    background: linear-gradient(to right, #4ade80, #3b82f6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.02em;
+}
+
+.form-label {
+    color: #94a3b8;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.custom-input {
+    background-color: rgba(15, 23, 42, 0.6);
+    border: 1px solid #334155;
+    color: #f8fafc;
+    border-radius: 12px;
+    padding: 12px 16px;
+    transition: all 0.3s ease;
+    width: 100%; /* Ensure full width like form-control */
+}
+
+.custom-input:focus {
+    background-color: rgba(15, 23, 42, 0.8);
+    border-color: #4ade80;
+    box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.2);
+    color: #fff;
+    outline: none;
+}
+
+.custom-input::placeholder {
+    color: #475569;
+}
+
+/* Remove default number arrows */
+.custom-input::-webkit-outer-spin-button,
+.custom-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.calculate-btn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    width: 100%;
+    cursor: pointer;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.calculate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.4);
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+}
+
+/* Result Section */
+.result-container {
+    animation: fadeInScale 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.result-card-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.emission-value {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #f87171; /* Reddish for warning/emission */
+    line-height: 1;
+    text-shadow: 0 0 30px rgba(248, 113, 113, 0.2);
+}
+
+.emission-unit {
+    font-size: 1.25rem;
+    color: #94a3b8;
+    font-weight: 400;
+    margin-left: 5px;
+}
+
+.emission-per-ha {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+}
+
+.breakdown-title {
+    font-size: 1.2rem;
+    color: #e2e8f0;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.breakdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #94a3b8;
+}
+
+.breakdown-item:last-child {
+    border-bottom: none;
+}
+
+.breakdown-value {
+    color: #f8fafc;
+    font-weight: 600;
+    background: rgba(16, 185, 129, 0.1); 
+    padding: 4px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.alert-danger-custom {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: #fca5a5;
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 20px;
+}

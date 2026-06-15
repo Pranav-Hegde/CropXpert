@@ -1,0 +1,27 @@
+# Node modules
+node_modules/
+
+# Python virtual environment
+venv/
+.venv/
+env/
+ENV/
+__pycache__/
+*.pyc
+
+# Environment configuration files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build outputs
+build/
+dist/
+out/
+.next/
+
+# Logs and databases
+*.log
+local_mongo_data/

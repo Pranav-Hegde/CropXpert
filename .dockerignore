@@ -1,0 +1,24 @@
+# Exclude local node packages
+**/node_modules/
+
+# Exclude python environments
+**/venv/
+**/.venv/
+**/env/
+**/ENV/
+**/__pycache__/
+
+# Exclude environment configuration and credentials
+.env
+.env.local
+.git/
+.gitignore
+.dockerignore
+
+# Exclude build artifacts
+**/build/
+**/dist/
+**/.next/
+*.pdf
+*.pptx
+*.docx

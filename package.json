@@ -1,0 +1,18 @@
+{
+  "name": "crop-recommendation-system-root",
+  "version": "1.0.0",
+  "description": "Root orchestrator for Crop Recommendation System",
+  "scripts": {
+    "start:frontend": "npm --prefix Crop/Frontend/frontend start",
+    "start:backend": "npm --prefix Crop/Backend start",
+    "start:recommend": "cd Crop/Recommend && python app.py",
+    "start:recommend:venv": "cd Crop/Recommend && venv\\Scripts\\python app.py",
+    "start:carbon": "cd Crop/CarbonFootprint && python app.py",
+    "start:carbon:venv": "cd Crop/CarbonFootprint && ..\\Recommend\\venv\\Scripts\\python app.py",
+    "start": "concurrently --kill-others \"npm run start:frontend\" \"npm run start:backend\" \"npm run start:recommend\" \"npm run start:carbon\"",
+    "start:venv": "concurrently --kill-others \"npm run start:frontend\" \"npm run start:backend\" \"npm run start:recommend:venv\" \"npm run start:carbon:venv\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
