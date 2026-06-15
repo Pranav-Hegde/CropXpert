@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const MONGO_URI = process.env.MONGO_URI || "mongodb+srv://pranavhegde:pranav123@cluster0.fos8jjm.mongodb.net/Crop?retryWrites=true&w=majority&appName=Cluster0";
+const MONGO_URI = process.env.MONGO_URI || "mongodb+srv://pranavhegde:pranav%40123@cluster0.fos8jjm.mongodb.net/Crop?retryWrites=true&w=majority&appName=Cluster0";
 
 mongoose.connect(MONGO_URI, {
     useNewUrlParser: true,

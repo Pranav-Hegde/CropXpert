@@ -1,0 +1,52 @@
+services:
+  # 1. Node.js Express Backend
+  - type: web
+    name: crop-backend
+    env: node
+    rootDir: Crop/Backend
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: MONGO_URI
+        sync: false # You will be prompted to enter your MongoDB Atlas Connection String
+      - key: JWT_SECRET
+        generateValue: true # Generates a secure random JWT key automatically
+
+  # 2. Python Recommendation API
+  - type: web
+    name: crop-recommend
+    env: python
+    rootDir: Crop/Recommend
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PORT
+        value: 5001
+
+  # 3. Python Carbon Footprint API
+  - type: web
+    name: crop-carbon
+    env: python
+    rootDir: Crop/CarbonFootprint
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PORT
+        value: 5002
+
+  # 4. React Frontend (served as a Static Site)
+  - type: web
+    name: crop-frontend
+    env: static
+    rootDir: Crop/Frontend/frontend
+    buildCommand: npm install && npm run build
+    publishDir: build
+    envVars:
+      - key: REACT_APP_BACKEND_API_URL
+        sync: false # Set this to the public URL of crop-backend (e.g. https://crop-backend.onrender.com)
+      - key: REACT_APP_RECOMMEND_API_URL
+        sync: false # Set this to the public URL of crop-recommend (e.g. https://crop-recommend.onrender.com)
+      - key: REACT_APP_CARBON_API_URL
+        sync: false # Set this to the public URL of crop-carbon (e.g. https://crop-carbon.onrender.com)
